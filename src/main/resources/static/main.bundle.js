@@ -5729,6 +5729,13 @@ var FacilitiesService = (function () {
             "Content-Type": "application/json",
             "Authorization": this.token
         });
+        this.isEmbedded = JSON.parse(localStorage.getItem('isEmbedded'));
+        if (this.isEmbedded == true) {
+            this._getUrl = "/ru/facilities/";
+            this._putUrl = "/ru/facilities";
+            this._deleteUrl = "/ru/facilities";
+            this._postUrl = "/ru/facilities";
+        }
     }
     FacilitiesService.prototype.createFacilities = function (facility) {
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: this.headers });
@@ -6559,6 +6566,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var IpProvidesConsumerService = (function () {
     function IpProvidesConsumerService(_http) {
         this._http = _http;
+        this.isEmbedded = JSON.parse(localStorage.getItem('isEmbedded'));
         this._getUrl = "http://localhost:8080/ru/facilities/";
         this._putUrl = "http://localhost:8080/ru/facilities";
         this._deleteUrl = "http://localhost:8080/ru/facilities";
@@ -6570,6 +6578,12 @@ var IpProvidesConsumerService = (function () {
             "Content-Type": "application/json",
             "Authorization": this.token
         });
+        if (this.isEmbedded == true) {
+            this._getUrl = "/ru/facilities/";
+            this._putUrl = "/ru/facilities";
+            this._deleteUrl = "/ru/facilities";
+            this._postUrl = "/ru/facilities";
+        }
     }
     IpProvidesConsumerService.prototype.createGenericObjects = function (facility, genericPropertyObject) {
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: this.headers });
@@ -6722,6 +6736,13 @@ var AmbulanceServiceService = (function () {
             "Content-Type": "application/json",
             "Authorization": this.token
         });
+        this.isEmbedded = JSON.parse(localStorage.getItem('isEmbedded'));
+        if (this.isEmbedded == true) {
+            this._getUrl = "/ru/facilities/";
+            this._putUrl = "/ru/facilities";
+            this._deleteUrl = "/ru/facilities";
+            this._postUrl = "/ru/facilities";
+        }
     }
     AmbulanceServiceService.prototype.createGenericObjects = function (facility, genericPropertyObject) {
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: this.headers });
@@ -6798,6 +6819,13 @@ var EmergencyContactsService = (function () {
             "Content-Type": "application/json",
             "Authorization": this.token
         });
+        this.isEmbedded = JSON.parse(localStorage.getItem('isEmbedded'));
+        if (this.isEmbedded == true) {
+            this._getUrl = "/ru/facilities/";
+            this._putUrl = "/ru/facilities";
+            this._deleteUrl = "/ru/facilities";
+            this._postUrl = "/ru/facilities";
+        }
     }
     EmergencyContactsService.prototype.createGenericObjects = function (facility, genericPropertyObject) {
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: this.headers });
@@ -6874,6 +6902,13 @@ var MedicineService = (function () {
             "Content-Type": "application/json",
             "Authorization": this.token
         });
+        this.isEmbedded = JSON.parse(localStorage.getItem('isEmbedded'));
+        if (this.isEmbedded == true) {
+            this._getUrl = "/ru/facilities/";
+            this._putUrl = "/ru/facilities";
+            this._deleteUrl = "/ru/facilities";
+            this._postUrl = "/ru/facilities";
+        }
     }
     MedicineService.prototype.createGenericObjects = function (facility, genericPropertyObject) {
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: this.headers });
@@ -6950,6 +6985,13 @@ var SpecialistService = (function () {
             "Content-Type": "application/json",
             "Authorization": this.token
         });
+        this.isEmbedded = JSON.parse(localStorage.getItem('isEmbedded'));
+        if (this.isEmbedded == true) {
+            this._getUrl = "/ru/facilities/";
+            this._putUrl = "/ru/facilities";
+            this._deleteUrl = "/ru/facilities";
+            this._postUrl = "/ru/facilities";
+        }
     }
     SpecialistService.prototype.createGenericObjects = function (facility, genericPropertyObject) {
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: this.headers });
@@ -7026,6 +7068,13 @@ var TransportationInfoService = (function () {
             "Content-Type": "application/json",
             "Authorization": this.token
         });
+        this.isEmbedded = JSON.parse(localStorage.getItem('isEmbedded'));
+        if (this.isEmbedded == true) {
+            this._getUrl = "/ru/facilities/";
+            this._putUrl = "/ru/facilities";
+            this._deleteUrl = "/ru/facilities";
+            this._postUrl = "/ru/facilities";
+        }
     }
     TransportationInfoService.prototype.createGenericObjects = function (facility, genericPropertyObject) {
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: this.headers });
@@ -7171,9 +7220,10 @@ var SignInComponent = (function () {
     SignInComponent.prototype.ngOnInit = function () {
     };
     SignInComponent.prototype.onSignIn = function (user) {
+        localStorage.setItem('currentUser', JSON.stringify({ token: this.token, name: user.userName }));
         this.authService.makeAuth(user);
         console.log(user);
-        localStorage.setItem('currentUser', JSON.stringify({ token: this.token, name: user.userName }));
+        //localStorage.setItem('currentUser', JSON.stringify({ token: this.token, name: user.userName }));
         this.userSignedInEvent.emit(user);
         console.log("in sign int ts signed in: ");
     };
